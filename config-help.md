@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.17.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.18.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -92,6 +92,7 @@ Optional Features:
   --enable-extended-functional-tests
                           enable expensive functional tests when using lcov
                           (default no)
+  --enable-fuzz           enable building of fuzz targets (default no)
   --disable-hardening     do not attempt to harden the resulting executables
                           (default is to harden when possible)
   --enable-reduce-exports attempt to reduce exported symbols in the resulting
@@ -105,11 +106,16 @@ Optional Features:
                           enable backwards compatibility with glibc
   --enable-asm            Enable assembly routines (default is yes)
   --disable-zmq           disable ZMQ notifications
+  --disable-bip70         disable BIP70 (payment protocol) support in GUI
+                          (enabled by default)
   --disable-man           do not install man pages (default is to install)
   --enable-debug          use debug compiler flags and macros (default is no)
   --enable-gprof          use gprof profiling compiler flags (default is no)
   --enable-werror         Treat certain compiler warnings as errors (default
                           is no)
+  --enable-util-cli       build bitcoin-cli
+  --enable-util-tx        build bitcoin-tx
+  --enable-util-wallet    build bitcoin-wallet
   --disable-largefile     omit support for large files
 
 Optional Packages:
@@ -125,6 +131,8 @@ Optional Packages:
                           compiler's sysroot if not specified).
   --with-miniupnpc        enable UPNP (default is yes if libminiupnpc is
                           found)
+  --with-rapidcheck       enable RapidCheck property based tests (default is
+                          yes if librapidcheck is found)
   --with-qrencode         enable QR code support (default is yes if qt is
                           enabled and libqrencode is found)
   --with-system-univalue  Build with system UniValue (default is no)
@@ -132,7 +140,8 @@ Optional Packages:
                           specify protoc bin path
   --with-sanitizers       comma separated list of extra sanitizers to build
                           with (default is none enabled)
-  --with-utils            build bitcoin-cli bitcoin-tx (default=yes)
+  --with-utils            build bitcoin-cli bitcoin-tx bitcoin-wallet
+                          (default=yes)
   --with-libs             build libraries (default=yes)
   --with-daemon           build bitcoind daemon (default=yes)
   --with-incompatible-bdb allow using a bdb version other than 4.8
