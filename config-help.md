@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.11.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.12.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -82,22 +82,27 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
-  --enable-wallet         enable wallet (default is yes)
+  --disable-wallet        disable wallet (enabled by default)
   --enable-upnp-default   if UPNP is enabled, turn it on at startup (default
                           is no)
-  --enable-tests          compile tests (default is yes)
+  --disable-tests         do not compile tests (default is to compile)
+  --disable-bench         do not compile benchmarks (default is to compile)
   --enable-comparison-tool-reorg-tests
                           enable expensive reorg tests in the comparison tool
                           (default no)
-  --enable-hardening      attempt to harden the resulting executables (default
-                          is yes)
+  --enable-extended-rpc-tests
+                          enable expensive RPC tests when using lcov (default
+                          no)
+  --disable-hardening     do not attempt to harden the resulting executables
+                          (default is to harden)
   --enable-reduce-exports attempt to reduce exported symbols in the resulting
                           executables (default is no)
-  --enable-ccache         use ccache for building (default is yes if ccache is
+  --disable-ccache        do not use ccache for building (default is to use if
                           found)
   --enable-lcov           enable lcov testing (default is no)
   --enable-glibc-back-compat
                           enable backwards compatibility with glibc
+  --disable-zmq           disable ZMQ notifications
   --enable-debug          use debug compiler flags and macros (default is no)
   --disable-largefile     omit support for large files
 
@@ -125,7 +130,7 @@ Optional Packages:
   --with-daemon           build bitcoind daemon (default=yes)
   --with-incompatible-bdb allow using a bdb version other than 4.8
   --with-gui[=no|qt4|qt5|auto]
-                          build bitcoin-qt GUI (default=auto, qt4 tried first)
+                          build bitcoin-qt GUI (default=auto, qt5 tried first)
   --with-qt-incdir=INC_DIR
                           specify qt include path (overridden by pkgconfig)
   --with-qt-libdir=LIB_DIR
@@ -174,8 +179,6 @@ Optional Packages:
                           is possible to specify a certain library for the
                           linker e.g.
                           --with-boost-unit-test-framework=boost_unit_test_framework-gcc
-  --with-libressl         Build with system LibreSSL (default is no;
-                          DANGEROUS; NOT SUPPORTED)
 
 Some influential environment variables:
   CXX         C++ compiler command
@@ -215,6 +218,10 @@ Some influential environment variables:
   X11XCB_CFLAGS
               C compiler flags for X11XCB, overriding pkg-config
   X11XCB_LIBS linker flags for X11XCB, overriding pkg-config
+  QTXCBQPA_CFLAGS
+              C compiler flags for QTXCBQPA, overriding pkg-config
+  QTXCBQPA_LIBS
+              linker flags for QTXCBQPA, overriding pkg-config
   QTPRINT_CFLAGS
               C compiler flags for QTPRINT, overriding pkg-config
   QTPRINT_LIBS
@@ -230,6 +237,15 @@ Some influential environment variables:
               linker flags for PROTOBUF, overriding pkg-config
   QR_CFLAGS   C compiler flags for QR, overriding pkg-config
   QR_LIBS     linker flags for QR, overriding pkg-config
+  EVENT_CFLAGS
+              C compiler flags for EVENT, overriding pkg-config
+  EVENT_LIBS  linker flags for EVENT, overriding pkg-config
+  EVENT_PTHREADS_CFLAGS
+              C compiler flags for EVENT_PTHREADS, overriding pkg-config
+  EVENT_PTHREADS_LIBS
+              linker flags for EVENT_PTHREADS, overriding pkg-config
+  ZMQ_CFLAGS  C compiler flags for ZMQ, overriding pkg-config
+  ZMQ_LIBS    linker flags for ZMQ, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
