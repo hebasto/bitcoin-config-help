@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.12.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.13.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -86,6 +86,8 @@ Optional Features:
   --enable-upnp-default   if UPNP is enabled, turn it on at startup (default
                           is no)
   --disable-tests         do not compile tests (default is to compile)
+  --disable-gui-tests     do not compile GUI tests (default is to compile if
+                          GUI and tests enabled)
   --disable-bench         do not compile benchmarks (default is to compile)
   --enable-comparison-tool-reorg-tests
                           enable expensive reorg tests in the comparison tool
@@ -123,6 +125,7 @@ Optional Packages:
                           --enable-tests)
   --with-qrencode         enable QR code support (default is yes if qt is
                           enabled and libqrencode is found)
+  --with-system-univalue  Build with system UniValue (default is no)
   --with-protoc-bindir=BIN_DIR
                           specify protoc bin path
   --with-utils            build bitcoin-cli bitcoin-tx (default=yes)
@@ -196,6 +199,7 @@ Some influential environment variables:
               User-defined run-time library search path.
   CPP         C preprocessor
   CXXCPP      C++ preprocessor
+  PYTHONPATH  Augments the default search path for python module files
   PKG_CONFIG  path to pkg-config utility
   PKG_CONFIG_PATH
               directories to add to pkg-config's search path
@@ -246,9 +250,14 @@ Some influential environment variables:
               linker flags for EVENT_PTHREADS, overriding pkg-config
   ZMQ_CFLAGS  C compiler flags for ZMQ, overriding pkg-config
   ZMQ_LIBS    linker flags for ZMQ, overriding pkg-config
+  UNIVALUE_CFLAGS
+              C compiler flags for UNIVALUE, overriding pkg-config
+  UNIVALUE_LIBS
+              linker flags for UNIVALUE, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
 
 Report bugs to <https://github.com/bitcoin/bitcoin/issues>.
+Bitcoin Core home page: <https://bitcoincore.org/>.
 ```
