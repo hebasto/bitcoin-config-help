@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.10.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.11.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -92,13 +92,12 @@ Optional Features:
   --enable-hardening      attempt to harden the resulting executables (default
                           is yes)
   --enable-reduce-exports attempt to reduce exported symbols in the resulting
-                          executables (default is yes)
+                          executables (default is no)
   --enable-ccache         use ccache for building (default is yes if ccache is
                           found)
   --enable-lcov           enable lcov testing (default is no)
   --enable-glibc-back-compat
-                          enable backwards compatibility with glibc and
-                          libstdc++
+                          enable backwards compatibility with glibc
   --enable-debug          use debug compiler flags and macros (default is no)
   --disable-largefile     omit support for large files
 
@@ -175,6 +174,8 @@ Optional Packages:
                           is possible to specify a certain library for the
                           linker e.g.
                           --with-boost-unit-test-framework=boost_unit_test_framework-gcc
+  --with-libressl         Build with system LibreSSL (default is no;
+                          DANGEROUS; NOT SUPPORTED)
 
 Some influential environment variables:
   CXX         C++ compiler command
@@ -233,5 +234,5 @@ Some influential environment variables:
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
 
-Report bugs to <info@bitcoin.org>.
+Report bugs to <https://github.com/bitcoin/bitcoin/issues>.
 ```
