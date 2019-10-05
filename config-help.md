@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.18.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.19.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -92,7 +92,8 @@ Optional Features:
   --enable-extended-functional-tests
                           enable expensive functional tests when using lcov
                           (default no)
-  --enable-fuzz           enable building of fuzz targets (default no)
+  --enable-fuzz           enable building of fuzz targets (default no).
+                          enabling this will disable all other targets
   --disable-hardening     do not attempt to harden the resulting executables
                           (default is to harden when possible)
   --enable-reduce-exports attempt to reduce exported symbols in the resulting
@@ -104,12 +105,17 @@ Optional Features:
                           enable lcov testing branch coverage (default is no)
   --enable-glibc-back-compat
                           enable backwards compatibility with glibc
-  --enable-asm            Enable assembly routines (default is yes)
+  --enable-threadlocal    enable features that depend on the c++ thread_local
+                          keyword (currently just thread names in debug logs).
+                          (default is to enabled if there is platform support
+                          and glibc-back-compat is not enabled)
+  --disable-asm           disable assembly routines (enabled by default)
   --disable-zmq           disable ZMQ notifications
-  --disable-bip70         disable BIP70 (payment protocol) support in GUI
-                          (enabled by default)
+  --enable-bip70          enable BIP70 (payment protocol) support in the GUI
+                          (default is to disable)
   --disable-man           do not install man pages (default is to install)
-  --enable-debug          use debug compiler flags and macros (default is no)
+  --enable-debug          use compiler flags and macros suited for debugging
+                          (default is no)
   --enable-gprof          use gprof profiling compiler flags (default is no)
   --enable-werror         Treat certain compiler warnings as errors (default
                           is no)
@@ -131,7 +137,7 @@ Optional Packages:
                           compiler's sysroot if not specified).
   --with-miniupnpc        enable UPNP (default is yes if libminiupnpc is
                           found)
-  --with-rapidcheck       enable RapidCheck property based tests (default is
+  --with-rapidcheck       enable RapidCheck property-based tests (default is
                           yes if librapidcheck is found)
   --with-qrencode         enable QR code support (default is yes if qt is
                           enabled and libqrencode is found)
@@ -144,7 +150,6 @@ Optional Packages:
                           (default=yes)
   --with-libs             build libraries (default=yes)
   --with-daemon           build bitcoind daemon (default=yes)
-  --with-incompatible-bdb allow using a bdb version other than 4.8
   --with-gui[=no|qt5|auto]
                           build bitcoin-qt GUI (default=auto)
   --with-qt-incdir=INC_DIR
@@ -160,6 +165,7 @@ Optional Packages:
                           specify qt bin path
   --with-qtdbus           enable DBus support (default is yes if qt is enabled
                           and QtDBus is found)
+  --with-incompatible-bdb allow using a bdb version other than 4.8
   --with-boost[=ARG]      use Boost library from a standard location
                           (ARG=yes), from the specified location (ARG=<path>),
                           or disable it (ARG=no) [ARG=yes]
@@ -214,8 +220,6 @@ Some influential environment variables:
               directories to add to pkg-config's search path
   PKG_CONFIG_LIBDIR
               path overriding pkg-config's built-in search path
-  BDB_CFLAGS  C compiler flags for BerkeleyDB, bypasses autodetection
-  BDB_LIBS    Linker flags for BerkeleyDB, bypasses autodetection
   QT5_CFLAGS  C compiler flags for QT5, overriding pkg-config
   QT5_LIBS    linker flags for QT5, overriding pkg-config
   QT_TEST_CFLAGS
@@ -252,9 +256,6 @@ Some influential environment variables:
               linker flags for QTACCESSIBILITY, overriding pkg-config
   QTFB_CFLAGS C compiler flags for QTFB, overriding pkg-config
   QTFB_LIBS   linker flags for QTFB, overriding pkg-config
-  X11XCB_CFLAGS
-              C compiler flags for X11XCB, overriding pkg-config
-  X11XCB_LIBS linker flags for X11XCB, overriding pkg-config
   QTXCBQPA_CFLAGS
               C compiler flags for QTXCBQPA, overriding pkg-config
   QTXCBQPA_LIBS
@@ -270,6 +271,8 @@ Some influential environment variables:
   QTCGL_CFLAGS
               C compiler flags for QTCGL, overriding pkg-config
   QTCGL_LIBS  linker flags for QTCGL, overriding pkg-config
+  BDB_CFLAGS  C compiler flags for BerkeleyDB, bypasses autodetection
+  BDB_LIBS    Linker flags for BerkeleyDB, bypasses autodetection
   SSL_CFLAGS  C compiler flags for SSL, overriding pkg-config
   SSL_LIBS    linker flags for SSL, overriding pkg-config
   CRYPTO_CFLAGS
