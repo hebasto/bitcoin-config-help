@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.15.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.16.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -103,9 +103,7 @@ Optional Features:
                           enable lcov testing branch coverage (default is no)
   --enable-glibc-back-compat
                           enable backwards compatibility with glibc
-  --enable-experimental-asm
-                          Enable experimental assembly routines (default is
-                          no)
+  --enable-asm            Enable assembly routines (default is yes)
   --disable-zmq           disable ZMQ notifications
   --disable-man           do not install man pages (default is to install)
   --enable-debug          use debug compiler flags and macros (default is no)
