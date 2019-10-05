@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.13.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.14.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -89,9 +89,6 @@ Optional Features:
   --disable-gui-tests     do not compile GUI tests (default is to compile if
                           GUI and tests enabled)
   --disable-bench         do not compile benchmarks (default is to compile)
-  --enable-comparison-tool-reorg-tests
-                          enable expensive reorg tests in the comparison tool
-                          (default no)
   --enable-extended-rpc-tests
                           enable expensive RPC tests when using lcov (default
                           no)
@@ -105,7 +102,10 @@ Optional Features:
   --enable-glibc-back-compat
                           enable backwards compatibility with glibc
   --disable-zmq           disable ZMQ notifications
+  --disable-man           do not install man pages (default is to install)
   --enable-debug          use debug compiler flags and macros (default is no)
+  --enable-werror         Treat certain compiler warnings as errors (default
+                          is no)
   --disable-largefile     omit support for large files
 
 Optional Packages:
@@ -121,8 +121,6 @@ Optional Packages:
                           compiler's sysroot if not specified).
   --with-miniupnpc        enable UPNP (default is yes if libminiupnpc is
                           found)
-  --with-comparison-tool  path to java comparison tool (requires
-                          --enable-tests)
   --with-qrencode         enable QR code support (default is yes if qt is
                           enabled and libqrencode is found)
   --with-system-univalue  Build with system UniValue (default is no)
@@ -205,6 +203,8 @@ Some influential environment variables:
               directories to add to pkg-config's search path
   PKG_CONFIG_LIBDIR
               path overriding pkg-config's built-in search path
+  BDB_CFLAGS  C compiler flags for BerkeleyDB, bypasses autodetection
+  BDB_LIBS    Linker flags for BerkeleyDB, bypasses autodetection
   QT_CFLAGS   C compiler flags for QT, overriding pkg-config
   QT_LIBS     linker flags for QT, overriding pkg-config
   QT_TEST_CFLAGS
