@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.14.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.15.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -89,9 +89,9 @@ Optional Features:
   --disable-gui-tests     do not compile GUI tests (default is to compile if
                           GUI and tests enabled)
   --disable-bench         do not compile benchmarks (default is to compile)
-  --enable-extended-rpc-tests
-                          enable expensive RPC tests when using lcov (default
-                          no)
+  --enable-extended-functional-tests
+                          enable expensive functional tests when using lcov
+                          (default no)
   --disable-hardening     do not attempt to harden the resulting executables
                           (default is to harden)
   --enable-reduce-exports attempt to reduce exported symbols in the resulting
@@ -99,8 +99,13 @@ Optional Features:
   --disable-ccache        do not use ccache for building (default is to use if
                           found)
   --enable-lcov           enable lcov testing (default is no)
+  --enable-lcov-branch-coverage
+                          enable lcov testing branch coverage (default is no)
   --enable-glibc-back-compat
                           enable backwards compatibility with glibc
+  --enable-experimental-asm
+                          Enable experimental assembly routines (default is
+                          no)
   --disable-zmq           disable ZMQ notifications
   --disable-man           do not install man pages (default is to install)
   --enable-debug          use debug compiler flags and macros (default is no)
@@ -182,6 +187,7 @@ Optional Packages:
                           --with-boost-unit-test-framework=boost_unit_test_framework-gcc
 
 Some influential environment variables:
+  ARFLAGS     Flags for the archiver, defaults to <cr> if not set
   CXX         C++ compiler command
   CXXFLAGS    C++ compiler flags
   LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
@@ -205,8 +211,10 @@ Some influential environment variables:
               path overriding pkg-config's built-in search path
   BDB_CFLAGS  C compiler flags for BerkeleyDB, bypasses autodetection
   BDB_LIBS    Linker flags for BerkeleyDB, bypasses autodetection
-  QT_CFLAGS   C compiler flags for QT, overriding pkg-config
-  QT_LIBS     linker flags for QT, overriding pkg-config
+  QT5_CFLAGS  C compiler flags for QT5, overriding pkg-config
+  QT5_LIBS    linker flags for QT5, overriding pkg-config
+  QT4_CFLAGS  C compiler flags for QT4, overriding pkg-config
+  QT4_LIBS    linker flags for QT4, overriding pkg-config
   QT_TEST_CFLAGS
               C compiler flags for QT_TEST, overriding pkg-config
   QT_TEST_LIBS
