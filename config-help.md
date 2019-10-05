@@ -1,6 +1,6 @@
 ```
 ./configure --help
-`configure' configures Bitcoin Core 0.16.0 to adapt to many kinds of systems.
+`configure' configures Bitcoin Core 0.17.0 to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -93,7 +93,7 @@ Optional Features:
                           enable expensive functional tests when using lcov
                           (default no)
   --disable-hardening     do not attempt to harden the resulting executables
-                          (default is to harden)
+                          (default is to harden when possible)
   --enable-reduce-exports attempt to reduce exported symbols in the resulting
                           executables (default is no)
   --disable-ccache        do not use ccache for building (default is to use if
@@ -107,6 +107,7 @@ Optional Features:
   --disable-zmq           disable ZMQ notifications
   --disable-man           do not install man pages (default is to install)
   --enable-debug          use debug compiler flags and macros (default is no)
+  --enable-gprof          use gprof profiling compiler flags (default is no)
   --enable-werror         Treat certain compiler warnings as errors (default
                           is no)
   --disable-largefile     omit support for large files
@@ -129,12 +130,14 @@ Optional Packages:
   --with-system-univalue  Build with system UniValue (default is no)
   --with-protoc-bindir=BIN_DIR
                           specify protoc bin path
+  --with-sanitizers       comma separated list of extra sanitizers to build
+                          with (default is none enabled)
   --with-utils            build bitcoin-cli bitcoin-tx (default=yes)
   --with-libs             build libraries (default=yes)
   --with-daemon           build bitcoind daemon (default=yes)
   --with-incompatible-bdb allow using a bdb version other than 4.8
-  --with-gui[=no|qt4|qt5|auto]
-                          build bitcoin-qt GUI (default=auto, qt5 tried first)
+  --with-gui[=no|qt5|auto]
+                          build bitcoin-qt GUI (default=auto)
   --with-qt-incdir=INC_DIR
                           specify qt include path (overridden by pkgconfig)
   --with-qt-libdir=LIB_DIR
@@ -165,11 +168,6 @@ Optional Packages:
                           use the Filesystem library from boost - it is
                           possible to specify a certain library for the linker
                           e.g. --with-boost-filesystem=boost_filesystem-gcc-mt
-  --with-boost-program-options[=special-lib]
-                          use the program options library from boost - it is
-                          possible to specify a certain library for the linker
-                          e.g.
-                          --with-boost-program-options=boost_program_options-gcc-mt-1_33_1
   --with-boost-thread[=special-lib]
                           use the Thread library from boost - it is possible
                           to specify a certain library for the linker e.g.
@@ -211,8 +209,6 @@ Some influential environment variables:
   BDB_LIBS    Linker flags for BerkeleyDB, bypasses autodetection
   QT5_CFLAGS  C compiler flags for QT5, overriding pkg-config
   QT5_LIBS    linker flags for QT5, overriding pkg-config
-  QT4_CFLAGS  C compiler flags for QT4, overriding pkg-config
-  QT4_LIBS    linker flags for QT4, overriding pkg-config
   QT_TEST_CFLAGS
               C compiler flags for QT_TEST, overriding pkg-config
   QT_TEST_LIBS
@@ -225,6 +221,28 @@ Some influential environment variables:
               C compiler flags for QTPLATFORM, overriding pkg-config
   QTPLATFORM_LIBS
               linker flags for QTPLATFORM, overriding pkg-config
+  QTFONTDATABASE_CFLAGS
+              C compiler flags for QTFONTDATABASE, overriding pkg-config
+  QTFONTDATABASE_LIBS
+              linker flags for QTFONTDATABASE, overriding pkg-config
+  QTEVENTDISPATCHER_CFLAGS
+              C compiler flags for QTEVENTDISPATCHER, overriding pkg-config
+  QTEVENTDISPATCHER_LIBS
+              linker flags for QTEVENTDISPATCHER, overriding pkg-config
+  QTTHEME_CFLAGS
+              C compiler flags for QTTHEME, overriding pkg-config
+  QTTHEME_LIBS
+              linker flags for QTTHEME, overriding pkg-config
+  QTDEVICEDISCOVERY_CFLAGS
+              C compiler flags for QTDEVICEDISCOVERY, overriding pkg-config
+  QTDEVICEDISCOVERY_LIBS
+              linker flags for QTDEVICEDISCOVERY, overriding pkg-config
+  QTACCESSIBILITY_CFLAGS
+              C compiler flags for QTACCESSIBILITY, overriding pkg-config
+  QTACCESSIBILITY_LIBS
+              linker flags for QTACCESSIBILITY, overriding pkg-config
+  QTFB_CFLAGS C compiler flags for QTFB, overriding pkg-config
+  QTFB_LIBS   linker flags for QTFB, overriding pkg-config
   X11XCB_CFLAGS
               C compiler flags for X11XCB, overriding pkg-config
   X11XCB_LIBS linker flags for X11XCB, overriding pkg-config
@@ -232,10 +250,17 @@ Some influential environment variables:
               C compiler flags for QTXCBQPA, overriding pkg-config
   QTXCBQPA_LIBS
               linker flags for QTXCBQPA, overriding pkg-config
-  QTPRINT_CFLAGS
-              C compiler flags for QTPRINT, overriding pkg-config
-  QTPRINT_LIBS
-              linker flags for QTPRINT, overriding pkg-config
+  QTCLIPBOARD_CFLAGS
+              C compiler flags for QTCLIPBOARD, overriding pkg-config
+  QTCLIPBOARD_LIBS
+              linker flags for QTCLIPBOARD, overriding pkg-config
+  QTGRAPHICS_CFLAGS
+              C compiler flags for QTGRAPHICS, overriding pkg-config
+  QTGRAPHICS_LIBS
+              linker flags for QTGRAPHICS, overriding pkg-config
+  QTCGL_CFLAGS
+              C compiler flags for QTCGL, overriding pkg-config
+  QTCGL_LIBS  linker flags for QTCGL, overriding pkg-config
   SSL_CFLAGS  C compiler flags for SSL, overriding pkg-config
   SSL_LIBS    linker flags for SSL, overriding pkg-config
   CRYPTO_CFLAGS
